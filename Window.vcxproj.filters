@@ -18,9 +18,15 @@
     <ClCompile Include="cApp.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cApp.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
