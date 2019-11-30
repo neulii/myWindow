@@ -21,7 +21,5 @@ bool cApp::OnInit()
 	m_MainWindow = new MainWindow();
 	m_MainWindow->Show();
 
-
-
 	return true;
 }
