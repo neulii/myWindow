@@ -28,7 +28,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::OnLeftButton(wxCommandEvent& event)
 {
-	
+	exit(0);
+
 	
 }
 
