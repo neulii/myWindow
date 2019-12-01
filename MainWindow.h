@@ -11,6 +11,7 @@ private:
 	wxButton* m_rightButton = nullptr;
 
 
+
 public:
 	MainWindow();
 	~MainWindow();

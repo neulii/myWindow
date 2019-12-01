@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include <iostream>
+#include <wx/log.h>
 
 wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
 	EVT_BUTTON(ID_LEFT_BUTTON, MainWindow::OnLeftButton)
@@ -20,6 +21,12 @@ MainWindow::MainWindow() :wxFrame(nullptr, wxID_ANY, "MyWindow")
 	m_rightButton = new wxButton(this, ID_RIGHT_BUTTON, "Click me", wxPoint(150, 20), wxSize(120, 35));
 
 	Center();
+	
+
+
+
+	//m_logWindow->Show(true);
+	
 }
 
 MainWindow::~MainWindow()
