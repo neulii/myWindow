@@ -1,6 +1,7 @@
 #include "cApp.h"
 
 //implenents main function -> entry point of program
+// wxIMPLEMENT_APP(cAPP) -> change properties to subsystem windows
 wxIMPLEMENT_APP_CONSOLE(cApp);
 
 //constructor
