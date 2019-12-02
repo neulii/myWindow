@@ -1,7 +1,7 @@
 #include "cApp.h"
 
 //implenents main function -> entry point of program
-wxIMPLEMENT_APP(cApp);
+wxIMPLEMENT_APP_CONSOLE(cApp);
 
 //constructor
 cApp::cApp()

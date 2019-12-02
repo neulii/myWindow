@@ -42,6 +42,6 @@ void MainWindow::OnLeftButton(wxCommandEvent& event)
 
 void MainWindow::OnRightButton(wxCommandEvent& event)
 {
-
+	std::cout << "das ist ein gedrückter button" << std::endl;
 }
 
