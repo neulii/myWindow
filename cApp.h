@@ -3,7 +3,6 @@
 #include "wx/wx.h"
 #include "MainWindow.h"
 
-
 class cApp : public wxApp
 {
 private:
@@ -15,5 +14,3 @@ public:
 
 	virtual bool OnInit();
 };
-
-
