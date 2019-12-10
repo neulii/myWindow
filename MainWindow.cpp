@@ -2,6 +2,8 @@
 #include <iostream>
 #include <wx/log.h>
 
+#include <fstream>
+
 wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
 	EVT_BUTTON(ID_LEFT_BUTTON, MainWindow::OnLeftButton)
 	EVT_BUTTON(ID_RIGHT_BUTTON, MainWindow::OnRightButton)
@@ -28,10 +30,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::OnLeftButton(wxCommandEvent& event)
 {
-	printAnyThing(44);
+	std::ofstream output;
+
+	std::string fileName = "test.txt";
+
+	output.open(fileName, std::ios_base::out || std::ios_base::app);
+
+	output << "test";
+	output.close();
+
+
+
+
+
+
+
+
 }
 
 void MainWindow::OnRightButton(wxCommandEvent& event)
 {
-	std::cout << "das ist ein gedrückter button" << std::endl;
+	
 }
