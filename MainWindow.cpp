@@ -34,13 +34,12 @@ void MainWindow::OnLeftButton(wxCommandEvent& event)
 
 	std::string fileName = "test.txt";
 
-	output.open(fileName, std::ios_base::out || std::ios_base::app);
+	output.open(fileName, std::ios_base::out | std::ios_base::app);
 
 	output << "test";
 	output.close();
 
-
-
+	std::cout << "written" << std::endl;
 
 
 
