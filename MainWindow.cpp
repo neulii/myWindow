@@ -30,24 +30,50 @@ MainWindow::~MainWindow()
 
 void MainWindow::OnLeftButton(wxCommandEvent& event)
 {
-	std::ofstream output;
+	addTextToFile("hallo das ist ein test\n","test.txt");
 
-	std::string fileName = "test.txt";
+}
+
+std::string MainWindow::getTextFromFile(const std::string& fileName) {
+
+	std::string inputText;
+	std::string line;
+	
+	std::ifstream input;
+
+	input.open(fileName, std::ios_base::in);
+	
+	while (std::getline(input, line)) {
+		inputText = inputText + "\n" + line;
+	}
+
+
+
+	input.close();
+
+	return  inputText;
+}
+
+void MainWindow::addTextToFile(const std::string& text, const std::string &fileName) {
+	
+	std::ofstream output;
 
 	output.open(fileName, std::ios_base::out | std::ios_base::app);
 
-	output << "test";
-	output.close();
+	if (output.is_open()) {
+		output << text;
+		output.close();
+		std::cout << std::endl << "Text written to File" << std::endl;
+	}
 
-	std::cout << "written" << std::endl;
-
-
-
-
+	else {
+		std::cout << "Error by Opening File" << std::endl;
+	}
 
 }
 
 void MainWindow::OnRightButton(wxCommandEvent& event)
 {
-	
+	std::string text = getTextFromFile("test.txt");
+	std::cout << text;
 }

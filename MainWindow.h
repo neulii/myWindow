@@ -17,6 +17,10 @@ public:
 	void OnLeftButton(wxCommandEvent& event);
 	void OnRightButton(wxCommandEvent& event);
 
+	std::string getTextFromFile(const std::string& fileName);
+	void addTextToFile(const std::string& text, const std::string& fileName);
+
+
 	wxDECLARE_EVENT_TABLE();
 
 };
