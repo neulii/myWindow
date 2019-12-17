@@ -1,4 +1,4 @@
-OBJS = MainWindow.o cApp.o
+OBJS = MainWindow.o cApp.o Window.o
 
 CXXFLAGS = -Wall -std=c++11 `wx-config --cxxflags`
 LDLIBS   = `wx-config --libs`
