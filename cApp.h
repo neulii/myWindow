@@ -3,12 +3,12 @@
 #include "wx/wx.h"
 #include "MainWindow.h"
 #include "Window.h"
+#include "MainWindowToView.h"
 
 class cApp : public wxApp
 {
 private:
-	MainWindow *m_MainWindow = nullptr;
-	Window* m_Window = nullptr;
+	MainWindowToView* m_MainWindow = nullptr;
 
 public:
 	cApp();
