@@ -22,6 +22,8 @@
 #include <wx/icon.h>
 #include <wx/button.h>
 #include <wx/grid.h>
+#include <wx/statusbr.h>
+#include <wx/menu.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -43,6 +45,10 @@ class Window : public wxFrame
 		wxTextCtrl* m_playerTwoInput;
 		wxButton* m_EnterInput;
 		wxGrid* m_pointTable;
+		wxStatusBar* m_statusBar1;
+		wxMenuBar* m_menubar;
+		wxMenu* m_fileMenu;
+		wxMenu* m_menuInfo;
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void m_EnterInputClick( wxCommandEvent& event ) { event.Skip(); }
