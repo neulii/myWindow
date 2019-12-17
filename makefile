@@ -12,6 +12,9 @@ MainWindow.o: MainWindow.cpp MainWindow.h
 cApp.o: cApp.cpp cApp.h
 	g++ -c cApp.cpp $(CXXFLAGS)
 
+Window.o: Window.cpp Window.h
+	g++ -c Window.cpp $(CXXFLAGS)
+
 clean:
 
 	rm $(OBJS)
