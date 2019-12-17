@@ -19,8 +19,13 @@ cApp::~cApp()
 
 bool cApp::OnInit()
 {
-	m_MainWindow = new MainWindow();
-	m_MainWindow->Show();
+
+	m_Window = new Window(nullptr);
+	m_Window->Show();
+
+
+	//m_MainWindow = new MainWindow();
+	//m_MainWindow->Show();
 
 	return true;
 }

@@ -11,7 +11,7 @@ wxEND_EVENT_TABLE();
 
 MainWindow::MainWindow() :wxFrame(nullptr, wxID_ANY, "MyWindow")
 {
-	SetSize(wxSize(500, 400));
+	SetSize(wxSize(800, 600));
 
 	//center my window
 
