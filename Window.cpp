@@ -124,7 +124,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	this->SetSizer( bSizer4 );
 	this->Layout();
-	m_statusBar1 = this->CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
+	m_statusBar = this->CreateStatusBar( 3, wxSTB_SIZEGRIP, wxID_ANY );
 	m_menubar = new wxMenuBar( 0 );
 	m_fileMenu = new wxMenu();
 	wxMenuItem* m_menuNewFile;
@@ -145,12 +145,12 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_menubar->Append( m_fileMenu, wxT("Datei") );
 
-	m_menuInfo = new wxMenu();
+	m_infoMenu = new wxMenu();
 	wxMenuItem* m_menuAbout;
-	m_menuAbout = new wxMenuItem( m_menuInfo, wxID_ANY, wxString( wxT("About") ) , wxEmptyString, wxITEM_NORMAL );
-	m_menuInfo->Append( m_menuAbout );
+	m_menuAbout = new wxMenuItem( m_infoMenu, wxID_ANY, wxString( wxT("About") ) , wxEmptyString, wxITEM_NORMAL );
+	m_infoMenu->Append( m_menuAbout );
 
-	m_menubar->Append( m_menuInfo, wxT("Info") );
+	m_menubar->Append( m_infoMenu, wxT("Info") );
 
 	this->SetMenuBar( m_menubar );
 
@@ -158,12 +158,12 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	this->Centre( wxBOTH );
 
 	// Connect Events
-	m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::m_EnterInputClick ), NULL, this );
+	m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
 }
 
 Window::~Window()
 {
 	// Disconnect Events
-	m_EnterInput->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::m_EnterInputClick ), NULL, this );
+	m_EnterInput->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
 
 }

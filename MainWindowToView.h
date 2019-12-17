@@ -4,12 +4,7 @@ class MainWindowToView : public Window
 {
 public:
 	MainWindowToView();
-	virtual void m_EnterInputClick(wxCommandEvent& event);
-
-
-
-
-
+	virtual void enterInputClick(wxCommandEvent& event);
 
 	~MainWindowToView();
 

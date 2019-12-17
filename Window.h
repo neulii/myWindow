@@ -45,13 +45,13 @@ class Window : public wxFrame
 		wxTextCtrl* m_playerTwoInput;
 		wxButton* m_EnterInput;
 		wxGrid* m_pointTable;
-		wxStatusBar* m_statusBar1;
+		wxStatusBar* m_statusBar;
 		wxMenuBar* m_menubar;
 		wxMenu* m_fileMenu;
-		wxMenu* m_menuInfo;
+		wxMenu* m_infoMenu;
 
 		// Virtual event handlers, overide them in your derived class
-		virtual void m_EnterInputClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void enterInputClick( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
