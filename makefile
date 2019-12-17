@@ -1,4 +1,4 @@
-OBJS = MainWindow.o cApp.o Window.o
+OBJS = MainWindow.o cApp.o Window.o MainWindowToView.o
 
 CXXFLAGS = -Wall -std=c++11 `wx-config --cxxflags`
 LDLIBS   = `wx-config --libs`
@@ -14,6 +14,9 @@ cApp.o: cApp.cpp cApp.h
 
 Window.o: Window.cpp Window.h
 	g++ -c Window.cpp $(CXXFLAGS)
+
+MainWindowToView.o: MainWindowToView.cpp MainWindowToView.h
+	g++ -c MainWindowToView.cpp $(CXXFLAGS)
 
 clean:
 
