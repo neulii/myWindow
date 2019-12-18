@@ -22,3 +22,28 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 
 	std::cout << "punkte eintragen" << std::endl;
 }
+
+void MainWindowToView::evt_NewFileClicked(wxCommandEvent& event)
+{
+	std::cout << "new file" << std::endl;
+}
+
+void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
+{
+	std::cout << "load file" << std::endl;
+}
+
+void MainWindowToView::evt_saveFileClicked(wxCommandEvent& event)
+{
+	std::cout << "save file" << std::endl;
+}
+
+void MainWindowToView::evt_exitProgramClicked(wxCommandEvent& event)
+{
+	std::cout << "exit" << std::endl;
+}
+
+void MainWindowToView::evt_aoutClicked(wxCommandEvent& event)
+{
+	std::cout << "about" << std::endl;
+}

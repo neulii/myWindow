@@ -22,12 +22,14 @@
     <ClCompile Include="cApp.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MainWindowToView.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cApp.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="MainWindowToView.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

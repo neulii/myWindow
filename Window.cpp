@@ -58,12 +58,12 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer13;
 	bSizer13 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_playerOneInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_playerOneInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER );
 	m_playerOneInput->SetMinSize( wxSize( 100,-1 ) );
 
 	bSizer13->Add( m_playerOneInput, 0, wxALL, 5 );
 
-	m_playerTwoInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_playerTwoInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER );
 	m_playerTwoInput->SetMinSize( wxSize( 100,-1 ) );
 
 	bSizer13->Add( m_playerTwoInput, 0, wxALL, 5 );
@@ -159,6 +159,11 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	// Connect Events
 	m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
+	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_NewFileClicked ), this, m_menuNewFile->GetId());
+	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_loadFileClicked ), this, m_menuLoadFile->GetId());
+	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_saveFileClicked ), this, m_menuSave->GetId());
+	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_exitProgramClicked ), this, m_menuExit->GetId());
+	m_infoMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_aoutClicked ), this, m_menuAbout->GetId());
 }
 
 Window::~Window()
