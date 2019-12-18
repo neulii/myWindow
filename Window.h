@@ -37,10 +37,11 @@ class Window : public wxFrame
 	private:
 
 	protected:
+		wxStaticText* m_winningPoints;
 		wxStaticText* m_pointsPlayerOneDisplay;
 		wxStaticText* m_pointsPlayerTwoDisplay;
-		wxStaticText* m_playerOne;
-		wxStaticText* m_playerTwo;
+		wxStaticText* m_playerOneNameText;
+		wxStaticText* m_playerTwoNameText;
 		wxTextCtrl* m_playerOneInput;
 		wxTextCtrl* m_playerTwoInput;
 		wxButton* m_EnterInput;
@@ -52,7 +53,7 @@ class Window : public wxFrame
 
 		// Virtual event handlers, overide them in your derived class
 		virtual void enterInputClick( wxCommandEvent& event ) { event.Skip(); }
-		virtual void evt_NewFileClicked( wxCommandEvent& event ) { event.Skip(); }
+		virtual void evt_NewGameClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_loadFileClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_saveFileClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_exitProgramClicked( wxCommandEvent& event ) { event.Skip(); }

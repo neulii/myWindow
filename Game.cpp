@@ -35,3 +35,8 @@ Player* Game::checkIfWon()
 
 	return winnerIs;
 }
+
+int Game::getWinningPoints()
+{
+	return winningPoints;
+}

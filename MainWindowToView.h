@@ -1,9 +1,14 @@
 #pragma once
 #include "Window.h"
+#include "Game.h"
 class MainWindowToView : public Window
 {
 private:
 	
+	Game *game;
+
+	std::string playerOneName = "stefan";
+	std::string playerTwoName = "birgit";
 
 
 public:
@@ -14,7 +19,7 @@ public:
 
 	//Menu actions
 
-	virtual void evt_NewFileClicked(wxCommandEvent& event);
+	virtual void evt_NewGameClicked(wxCommandEvent& event);
 	virtual void evt_loadFileClicked(wxCommandEvent& event);
 	virtual void evt_saveFileClicked(wxCommandEvent& event); 
 	virtual void evt_exitProgramClicked(wxCommandEvent& event); 

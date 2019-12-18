@@ -19,7 +19,8 @@ public:
 
 	Game(std::string playerNameOne, std::string playerNameTwo, int winningPoints);
 	void addPointsFromRound(int playerOnePoints, int playerTwoPoints);
-	
+	int getWinningPoints();
+
 	Player* checkIfWon();
 
 };

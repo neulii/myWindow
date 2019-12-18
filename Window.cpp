@@ -19,18 +19,34 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer11;
 	bSizer11 = new wxBoxSizer( wxVERTICAL );
 
+	wxBoxSizer* bSizer8;
+	bSizer8 = new wxBoxSizer( wxVERTICAL );
+
+	m_winningPoints = new wxStaticText( this, wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_winningPoints->Wrap( -1 );
+	m_winningPoints->SetFont( wxFont( 16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+	m_winningPoints->Enable( false );
+	m_winningPoints->SetMinSize( wxSize( 210,-1 ) );
+
+	bSizer8->Add( m_winningPoints, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
+
+	bSizer11->Add( bSizer8, 0, 0, 5 );
+
 	wxBoxSizer* bSizer16;
 	bSizer16 = new wxBoxSizer( wxHORIZONTAL );
 
 	m_pointsPlayerOneDisplay = new wxStaticText( this, wxID_ANY, wxT("0"), wxDefaultPosition, wxSize( 100,-1 ), wxALIGN_CENTER_HORIZONTAL );
 	m_pointsPlayerOneDisplay->Wrap( -1 );
 	m_pointsPlayerOneDisplay->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	m_pointsPlayerOneDisplay->Enable( false );
 
 	bSizer16->Add( m_pointsPlayerOneDisplay, 0, wxALL, 5 );
 
 	m_pointsPlayerTwoDisplay = new wxStaticText( this, wxID_ANY, wxT("0"), wxDefaultPosition, wxSize( 100,-1 ), wxALIGN_CENTER_HORIZONTAL );
 	m_pointsPlayerTwoDisplay->Wrap( -1 );
 	m_pointsPlayerTwoDisplay->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	m_pointsPlayerTwoDisplay->Enable( false );
 
 	bSizer16->Add( m_pointsPlayerTwoDisplay, 1, wxALL|wxEXPAND, 5 );
 
@@ -40,17 +56,19 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer15;
 	bSizer15 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_playerOne = new wxStaticText( this, wxID_ANY, wxT("PlayerOne"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_playerOne->Wrap( -1 );
-	m_playerOne->SetMinSize( wxSize( 100,-1 ) );
+	m_playerOneNameText = new wxStaticText( this, wxID_ANY, wxT("PlayerOne"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_playerOneNameText->Wrap( -1 );
+	m_playerOneNameText->Enable( false );
+	m_playerOneNameText->SetMinSize( wxSize( 100,-1 ) );
 
-	bSizer15->Add( m_playerOne, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer15->Add( m_playerOneNameText, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_playerTwo = new wxStaticText( this, wxID_ANY, wxT("PlayerTwo"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_playerTwo->Wrap( -1 );
-	m_playerTwo->SetMinSize( wxSize( 100,-1 ) );
+	m_playerTwoNameText = new wxStaticText( this, wxID_ANY, wxT("PlayerTwo"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_playerTwoNameText->Wrap( -1 );
+	m_playerTwoNameText->Enable( false );
+	m_playerTwoNameText->SetMinSize( wxSize( 100,-1 ) );
 
-	bSizer15->Add( m_playerTwo, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer15->Add( m_playerTwoNameText, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 
 	bSizer11->Add( bSizer15, 0, 0, 5 );
@@ -59,11 +77,13 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer13 = new wxBoxSizer( wxHORIZONTAL );
 
 	m_playerOneInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER );
+	m_playerOneInput->Enable( false );
 	m_playerOneInput->SetMinSize( wxSize( 100,-1 ) );
 
 	bSizer13->Add( m_playerOneInput, 0, wxALL, 5 );
 
 	m_playerTwoInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER );
+	m_playerTwoInput->Enable( false );
 	m_playerTwoInput->SetMinSize( wxSize( 100,-1 ) );
 
 	bSizer13->Add( m_playerTwoInput, 0, wxALL, 5 );
@@ -75,6 +95,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer14 = new wxBoxSizer( wxVERTICAL );
 
 	m_EnterInput = new wxButton( this, wxID_ANY, wxT("Punkte Eintragen"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_EnterInput->Enable( false );
 	m_EnterInput->SetMinSize( wxSize( 210,-1 ) );
 
 	bSizer14->Add( m_EnterInput, 0, wxALL, 5 );
@@ -114,6 +135,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	// Cell Defaults
 	m_pointTable->SetDefaultCellAlignment( wxALIGN_CENTER, wxALIGN_CENTER );
+	m_pointTable->Enable( false );
 	m_pointTable->SetMinSize( wxSize( 200,-1 ) );
 
 	bSizer12->Add( m_pointTable, 0, wxALL, 5 );
@@ -127,9 +149,9 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_statusBar = this->CreateStatusBar( 3, wxSTB_SIZEGRIP, wxID_ANY );
 	m_menubar = new wxMenuBar( 0 );
 	m_fileMenu = new wxMenu();
-	wxMenuItem* m_menuNewFile;
-	m_menuNewFile = new wxMenuItem( m_fileMenu, wxID_ANY, wxString( wxT("Neue Datei") ) , wxEmptyString, wxITEM_NORMAL );
-	m_fileMenu->Append( m_menuNewFile );
+	wxMenuItem* m_menuNewGame;
+	m_menuNewGame = new wxMenuItem( m_fileMenu, wxID_ANY, wxString( wxT("Neues Spiel") ) , wxEmptyString, wxITEM_NORMAL );
+	m_fileMenu->Append( m_menuNewGame );
 
 	wxMenuItem* m_menuLoadFile;
 	m_menuLoadFile = new wxMenuItem( m_fileMenu, wxID_ANY, wxString( wxT("Laden") ) , wxEmptyString, wxITEM_NORMAL );
@@ -159,7 +181,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	// Connect Events
 	m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
-	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_NewFileClicked ), this, m_menuNewFile->GetId());
+	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_NewGameClicked ), this, m_menuNewGame->GetId());
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_loadFileClicked ), this, m_menuLoadFile->GetId());
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_saveFileClicked ), this, m_menuSave->GetId());
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_exitProgramClicked ), this, m_menuExit->GetId());

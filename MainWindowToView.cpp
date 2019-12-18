@@ -18,14 +18,40 @@ MainWindowToView::~MainWindowToView() {
 
 void MainWindowToView::enterInputClick(wxCommandEvent& event)
 { 
+	
 	event.Skip(); 
 
 	std::cout << "punkte eintragen" << std::endl;
+
+
+
+
 }
 
-void MainWindowToView::evt_NewFileClicked(wxCommandEvent& event)
-{
-	std::cout << "new file" << std::endl;
+void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)
+{	
+	std::cout << "new game menu clicked" << std::endl;
+
+	//enable controls
+	m_pointsPlayerOneDisplay->Enable();
+	m_pointsPlayerTwoDisplay->Enable();
+	m_playerOneNameText->Enable();
+	m_playerTwoNameText->Enable();
+	m_playerOneInput->Enable();
+	m_playerTwoInput->Enable();
+	m_EnterInput->Enable();
+	m_pointTable->Enable();
+	m_winningPoints->Enable();
+
+	//create new game
+	game = new Game(playerOneName, playerTwoName, 500);
+
+	m_playerOneNameText->SetLabel(playerOneName);
+	m_playerTwoNameText->SetLabel(playerTwoName);
+
+	//set winning points to label
+	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints()));
+
 }
 
 void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
