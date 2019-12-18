@@ -9,7 +9,6 @@ void Player::addPoints(int points)
 {
 	playerPoints += points;
 	pointList.push_back(points);
-
 }
 
 bool Player::subtractPoints(int points)
@@ -20,7 +19,6 @@ bool Player::subtractPoints(int points)
 	{
 		subtractionSuccessful = true;
 		playerPoints -= points;
-		
 	}
 	
 	return subtractionSuccessful;
@@ -29,6 +27,13 @@ bool Player::subtractPoints(int points)
 std::vector<int>& Player::getPlayerPointList()
 {
 	return pointList;
+}
 
+int Player::getPoints()
+{
+	return playerPoints;
+}
 
+std::string Player::getPlayerName() {
+	return playerName;
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cApp.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="MainWindowToView.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cApp.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="MainWindowToView.h" />
     <ClInclude Include="Player.h" />
