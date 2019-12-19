@@ -29,11 +29,11 @@ Player* Game::checkIfWon()
 {
 	Player* winnerIs = nullptr;
 
-	if (playerOne->getPoints() >= winningPoints)
+	if (playerOne->getPoints() -playerTwo->getPoints() >= winningPoints)
 	{
 		winnerIs = playerOne;
 	}
-	else if(playerTwo->getPoints() >= winningPoints)
+	else if(playerTwo->getPoints() - playerOne->getPoints() >= winningPoints)
 	{
 		winnerIs = playerTwo;
 	}
