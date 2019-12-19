@@ -18,9 +18,9 @@ MainWindowToView::MainWindowToView() :Window(nullptr){
 
 #endif // DEBUG
 	
+
 	
 	
-	//m_EnterInput->Connect(wxEVT_KEY_DOWN, wxCommandEventHandler(Window::enterInputClick), NULL, this);
 
 
 }
@@ -55,6 +55,7 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 		catch (const std::exception& error)
 		{
 			std::cout << "fehler beim auslesen!  " << error.what() << std::endl;
+			
 			return;
 			//std::cout << error.what() << std::endl;
 		}
@@ -79,16 +80,24 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 
 		m_pointTable->SendSizeEventToParent();
 
+		m_playerOneInput->SetFocus();
+	
+		game->nextRound();
 	}
 	//if input fields empty
 	else
 	{
 		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
+		if (m_playerOneInput->IsEmpty())
+		{
+			m_playerOneInput->SetFocus();
+		}
+		else
+		{
+			m_playerTwoInput->SetFocus();
+		}
 	}
 	
-	m_playerOneInput->SetFocus();
-	
-	game->nextRound();
 	event.Skip(); 
 }
 
@@ -125,7 +134,7 @@ void MainWindowToView::startNewGame()
 
 	m_pointTable->SetColLabelValue(0,game->getPlayers().at(0)->getPlayerName());
 	m_pointTable->SetColLabelValue(1,game->getPlayers().at(1)->getPlayerName());
-
+	m_playerOneInput->SetFocus();
 
 }
 
@@ -153,7 +162,11 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 {
 	if (event.GetId() == ID_PLAYER_ONE)
 	{
-		m_playerTwoInput->SetFocus();
+		if (!m_playerOneInput->IsEmpty()) {
+			m_playerTwoInput->SetFocus();
+		}
+		else
+			return;
 	}
 	else if (event.GetId() == ID_PLAYER_TWO)
 	{

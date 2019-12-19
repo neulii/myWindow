@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Game.h"
 
-#define DEBUG
+//#define DEBUG
 
 class MainWindowToView : public Window
 {
