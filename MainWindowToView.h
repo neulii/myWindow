@@ -1,6 +1,9 @@
 #pragma once
 #include "Window.h"
 #include "Game.h"
+
+#define DEBUG
+
 class MainWindowToView : public Window
 {
 private:
@@ -24,6 +27,8 @@ public:
 	virtual void evt_saveFileClicked(wxCommandEvent& event); 
 	virtual void evt_exitProgramClicked(wxCommandEvent& event); 
 	virtual void evt_aoutClicked(wxCommandEvent& event); 
+
+	void startNewGame();
 
 	~MainWindowToView();
 
