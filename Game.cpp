@@ -51,3 +51,14 @@ std::vector<Player*> &Game::getPlayers()
 	return players;
 }
 
+int Game::getPlayedRounds()
+{
+	return playedRounds;
+}
+
+void Game::nextRound()
+{
+	playedRounds++;
+
+}
+

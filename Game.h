@@ -24,6 +24,9 @@ public:
 	int getWinningPoints();
 	std::vector<Player*> &getPlayers();
 
+	int getPlayedRounds();
+	void nextRound();
+
 	Player* checkIfWon();
 
 };

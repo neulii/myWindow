@@ -9,6 +9,7 @@ MainWindowToView::MainWindowToView() :Window(nullptr){
 	int fieldWidth[] = { 100,50,100 };
 
 	m_statusBar->SetStatusWidths(3, fieldWidth);
+	
 
 
 #ifdef DEBUG
@@ -34,8 +35,6 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 	std::string input_two;
 	int points_pTwo;
 	int points_pOne;
-
-	event.Skip(); 
 
 	//check input if empty
 	if (!(m_playerOneInput->GetValue().IsEmpty() || m_playerTwoInput->GetValue().IsEmpty()))
@@ -71,11 +70,14 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 		m_playerOneInput->Clear();
 		m_playerTwoInput->Clear();
 		
-		m_pointTable->InsertRows();
-		m_pointTable->SendSizeEventToParent();
-
-		m_playerOneInput->SetFocus();
+		//insert row in the top 
+		m_pointTable->InsertRows(game->getPlayedRounds(),1);
 		
+		m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
+		m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
+		m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
+
+		m_pointTable->SendSizeEventToParent();
 
 	}
 	//if input fields empty
@@ -83,14 +85,17 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 	{
 		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
 	}
+	
+	m_playerOneInput->SetFocus();
+	
+	game->nextRound();
+	event.Skip(); 
 }
 
 void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)
 {	
 	std::cout << "new game menu clicked" << std::endl;
 	startNewGame();
-
-	
 }
 
 void MainWindowToView::startNewGame()
@@ -116,7 +121,10 @@ void MainWindowToView::startNewGame()
 	//set winning points to label
 	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints()));
 
-	
+	std::string test = game->getPlayers().at(0)->getPlayerName();
+
+	m_pointTable->SetColLabelValue(0,game->getPlayers().at(0)->getPlayerName());
+	m_pointTable->SetColLabelValue(1,game->getPlayers().at(1)->getPlayerName());
 
 
 }
@@ -143,6 +151,14 @@ void MainWindowToView::evt_aboutClicked(wxCommandEvent& event)
 
 void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 {
+	if (event.GetId() == ID_PLAYER_ONE)
+	{
+		m_playerTwoInput->SetFocus();
+	}
+	else if (event.GetId() == ID_PLAYER_TWO)
+	{
+		enterInputClick(event);
+	}
+
 	event.Skip(); 
-	enterInputClick(event);
 }

@@ -76,13 +76,13 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer13;
 	bSizer13 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_playerOneInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER|wxTE_PROCESS_ENTER );
+	m_playerOneInput = new wxTextCtrl( this, ID_PLAYER_ONE, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER|wxTE_PROCESS_ENTER );
 	m_playerOneInput->Enable( false );
 	m_playerOneInput->SetMinSize( wxSize( 100,-1 ) );
 
 	bSizer13->Add( m_playerOneInput, 0, wxALL, 5 );
 
-	m_playerTwoInput = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER|wxTE_PROCESS_ENTER );
+	m_playerTwoInput = new wxTextCtrl( this, ID_PLAYER_TWO, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_CENTER|wxTE_PROCESS_ENTER );
 	m_playerTwoInput->Enable( false );
 	m_playerTwoInput->SetMinSize( wxSize( 100,-1 ) );
 
@@ -112,7 +112,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_pointTable = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxSize( 300,-1 ), 0 );
 
 	// Grid
-	m_pointTable->CreateGrid( 1, 2 );
+	m_pointTable->CreateGrid( 0, 2 );
 	m_pointTable->EnableEditing( false );
 	m_pointTable->EnableGridLines( true );
 	m_pointTable->EnableDragGridSize( false );
