@@ -18,14 +18,53 @@ MainWindowToView::~MainWindowToView() {
 
 void MainWindowToView::enterInputClick(wxCommandEvent& event)
 { 
-	
+	std::string input_one;
+	std::string input_two;
+	int points_pTwo;
+	int points_pOne;
+
 	event.Skip(); 
 
-	std::cout << "punkte eintragen" << std::endl;
+	//check input if empty
+	if (!(m_playerOneInput->GetValue().IsEmpty() || m_playerTwoInput->GetValue().IsEmpty()))
+	{
+		try
+		{
+			//get numbers from inputfield
+			input_one = static_cast<std::string>(m_playerOneInput->GetValue());
+			input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
+
+			//convert input to int
+			
+			points_pOne = std::stoi(input_one);
+			points_pTwo = std::stoi(input_two);
+			
+			//std::cout << points_pOne << "    " << points_pTwo << std::endl;
+		}
+		catch (const std::exception& error)
+		{
+			std::cout << "fehler beim auslesen!  " << error.what() << std::endl;
+			return;
+			//std::cout << error.what() << std::endl;
+		}
 
 
+		//add values to players
 
+		game->addPointsFromRound(points_pOne, points_pTwo);
 
+		m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
+		m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
+		
+		m_playerOneInput->Clear();
+		m_playerTwoInput->Clear();
+
+	}
+	//if input fields empty
+	else
+	{
+		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
+	}
 }
 
 void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)

@@ -6,6 +6,10 @@ Game::Game(std::string playerNameOne, std::string playerNameTwo, int winningPoin
 	playerOne = new Player(playerNameOne);
 	playerTwo = new Player(playerNameTwo);
 
+	players.push_back(playerOne);
+	players.push_back(playerTwo);
+
+
 }
 
 void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
@@ -20,6 +24,7 @@ void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
 	}
 }
 
+//TODO check winning points is not correct
 Player* Game::checkIfWon()
 {
 	Player* winnerIs = nullptr;
@@ -40,3 +45,9 @@ int Game::getWinningPoints()
 {
 	return winningPoints;
 }
+
+std::vector<Player*> &Game::getPlayers()
+{
+	return players;
+}
+
