@@ -17,8 +17,9 @@ MainWindowToView::MainWindowToView() :Window(nullptr){
 
 #endif // DEBUG
 	
-
-
+	
+	
+	//m_EnterInput->Connect(wxEVT_KEY_DOWN, wxCommandEventHandler(Window::enterInputClick), NULL, this);
 
 
 }
@@ -72,6 +73,8 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 		
 		m_pointTable->InsertRows();
 		m_pointTable->SendSizeEventToParent();
+
+		m_playerOneInput->SetFocus();
 		
 
 	}
@@ -113,6 +116,7 @@ void MainWindowToView::startNewGame()
 	//set winning points to label
 	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints()));
 
+	
 
 
 }
@@ -132,7 +136,13 @@ void MainWindowToView::evt_exitProgramClicked(wxCommandEvent& event)
 	std::cout << "exit" << std::endl;
 }
 
-void MainWindowToView::evt_aoutClicked(wxCommandEvent& event)
+void MainWindowToView::evt_aboutClicked(wxCommandEvent& event)
 {
 	std::cout << "about" << std::endl;
+}
+
+void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
+{
+	event.Skip(); 
+	enterInputClick(event);
 }

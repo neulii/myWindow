@@ -52,12 +52,13 @@ class Window : public wxFrame
 		wxMenu* m_infoMenu;
 
 		// Virtual event handlers, overide them in your derived class
+		virtual void evt_enterInInputfield( wxCommandEvent& event ) { event.Skip(); }
 		virtual void enterInputClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_NewGameClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_loadFileClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_saveFileClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_exitProgramClicked( wxCommandEvent& event ) { event.Skip(); }
-		virtual void evt_aoutClicked( wxCommandEvent& event ) { event.Skip(); }
+		virtual void evt_aboutClicked( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:

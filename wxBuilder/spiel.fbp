@@ -465,7 +465,7 @@
                                         <property name="resize">Resizable</property>
                                         <property name="show">1</property>
                                         <property name="size"></property>
-                                        <property name="style">wxTE_CENTER</property>
+                                        <property name="style">wxTE_CENTER|wxTE_PROCESS_ENTER</property>
                                         <property name="subclass"></property>
                                         <property name="toolbar_pane">0</property>
                                         <property name="tooltip"></property>
@@ -477,6 +477,7 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
+                                        <event name="OnTextEnter">evt_enterInInputfield</event>
                                     </object>
                                 </object>
                                 <object class="sizeritem" expanded="0">
@@ -529,7 +530,7 @@
                                         <property name="resize">Resizable</property>
                                         <property name="show">1</property>
                                         <property name="size"></property>
-                                        <property name="style">wxTE_CENTER</property>
+                                        <property name="style">wxTE_CENTER|wxTE_PROCESS_ENTER</property>
                                         <property name="subclass"></property>
                                         <property name="toolbar_pane">0</property>
                                         <property name="tooltip"></property>
@@ -541,6 +542,7 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
+                                        <event name="OnTextEnter">evt_enterInInputfield</event>
                                     </object>
                                 </object>
                             </object>
@@ -590,7 +592,7 @@
                                         <property name="font"></property>
                                         <property name="gripper">0</property>
                                         <property name="hidden">0</property>
-                                        <property name="id">wxID_ANY</property>
+                                        <property name="id">wxID_OK</property>
                                         <property name="label">Punkte Eintragen</property>
                                         <property name="margins"></property>
                                         <property name="markup">0</property>
@@ -853,7 +855,7 @@
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
                         <property name="unchecked_bitmap"></property>
-                        <event name="OnMenuSelection">evt_aoutClicked</event>
+                        <event name="OnMenuSelection">evt_aboutClicked</event>
                     </object>
                 </object>
             </object>

@@ -26,7 +26,9 @@ public:
 	virtual void evt_loadFileClicked(wxCommandEvent& event);
 	virtual void evt_saveFileClicked(wxCommandEvent& event); 
 	virtual void evt_exitProgramClicked(wxCommandEvent& event); 
-	virtual void evt_aoutClicked(wxCommandEvent& event); 
+	virtual void evt_aboutClicked(wxCommandEvent& event); 
+	virtual void evt_enterInInputfield(wxCommandEvent& event);
+
 
 	void startNewGame();
 
