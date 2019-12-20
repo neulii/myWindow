@@ -31,7 +31,6 @@ MainWindow::~MainWindow()
 void MainWindow::OnLeftButton(wxCommandEvent& event)
 {
 	addTextToFile("hallo das ist ein test\n","test.txt");
-
 }
 
 std::string MainWindow::getTextFromFile(const std::string& fileName) {
@@ -46,9 +45,7 @@ std::string MainWindow::getTextFromFile(const std::string& fileName) {
 	while (std::getline(input, line)) {
 		inputText = inputText + "\n" + line;
 	}
-
-
-
+	
 	input.close();
 
 	return  inputText;

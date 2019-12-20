@@ -13,7 +13,6 @@ private:
 	std::string playerOneName = "stefan";
 	std::string playerTwoName = "birgit";
 
-
 public:
 	MainWindowToView();
 
@@ -29,9 +28,7 @@ public:
 	virtual void evt_aboutClicked(wxCommandEvent& event); 
 	virtual void evt_enterInInputfield(wxCommandEvent& event);
 
-
 	void startNewGame();
 
 	~MainWindowToView();
-
 };

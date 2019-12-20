@@ -28,6 +28,4 @@ public:
 	void nextRound();
 
 	Player* checkIfWon();
-
 };
-

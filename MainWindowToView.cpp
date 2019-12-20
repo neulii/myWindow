@@ -10,18 +10,11 @@ MainWindowToView::MainWindowToView() :Window(nullptr){
 
 	m_statusBar->SetStatusWidths(3, fieldWidth);
 	
-
-
 #ifdef DEBUG
 
 	startNewGame();
 
 #endif // DEBUG
-	
-
-	
-	
-
 
 }
 
@@ -59,7 +52,6 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 			return;
 			//std::cout << error.what() << std::endl;
 		}
-
 
 		//add values to players
 
@@ -109,7 +101,6 @@ void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)
 
 void MainWindowToView::startNewGame()
 {
-
 	//enable controls
 	m_pointsPlayerOneDisplay->Enable();
 	m_pointsPlayerTwoDisplay->Enable();
@@ -135,7 +126,6 @@ void MainWindowToView::startNewGame()
 	m_pointTable->SetColLabelValue(0,game->getPlayers().at(0)->getPlayerName());
 	m_pointTable->SetColLabelValue(1,game->getPlayers().at(1)->getPlayerName());
 	m_playerOneInput->SetFocus();
-
 }
 
 void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)

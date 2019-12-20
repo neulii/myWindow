@@ -10,7 +10,6 @@ cApp::cApp()
 
 }
 
-
 //deconstructor
 cApp::~cApp()
 {
@@ -19,7 +18,6 @@ cApp::~cApp()
 
 bool cApp::OnInit()
 {
-
 	m_MainWindow = new MainWindowToView();
 	m_MainWindow->Show();
 

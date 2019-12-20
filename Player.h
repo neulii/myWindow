@@ -18,7 +18,4 @@ public:
 	std::string getPlayerName();
 
 	std::vector<int>& getPlayerPointList();
-	
-
 };
-
