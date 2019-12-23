@@ -150,18 +150,57 @@ void MainWindowToView::evt_aboutClicked(wxCommandEvent& event)
 
 void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 {
-	if (event.GetId() == ID_PLAYER_ONE)
+	std::string input_one;
+	std::string input_two;
+
+	int points_pTwo = 0;
+	int points_pOne = 0;
+
+	//get input from field
+	input_one = static_cast<std::string>(m_playerOneInput->GetValue());
+
+	//check if infput is valid
+
+	if(!CheckIfCorrectValue(input_one))
 	{
-		if (!m_playerOneInput->IsEmpty()) {
-			m_playerTwoInput->SetFocus();
-		}
-		else
-			return;
-	}
-	else if (event.GetId() == ID_PLAYER_TWO)
-	{
-		enterInputClick(event);
+		std::cout << "input is not valid" << std::endl;
+		m_playerOneInput->Clear();
+		return;
+
 	}
 
+	//check input two if correct input
+
+
+	
+	input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
+
+	std::cout << input_one << "    " << input_two << std::endl;
+
 	event.Skip(); 
+}
+
+bool MainWindowToView::CheckIfCorrectValue(std::string value)
+{
+	int digitsInString = 0;
+	int stringLength = value.length();
+
+	for(int i = 0; i<stringLength; i++)
+	{
+		if(!isdigit(value.at(i)))
+		{
+			return false;
+		}
+		else
+		{
+			digitsInString++;
+		}		
+	}
+
+	if(digitsInString == value.length())
+	{
+		return true;
+	}
+	else 
+		return false;
 }

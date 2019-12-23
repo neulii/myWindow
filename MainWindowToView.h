@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Game.h"
 
-//#define DEBUG
+#define DEBUG
 
 class MainWindowToView : public Window
 {
@@ -28,6 +28,8 @@ public:
 	virtual void evt_aboutClicked(wxCommandEvent& event); 
 	virtual void evt_enterInInputfield(wxCommandEvent& event);
 
+	
+	bool CheckIfCorrectValue(std::string value);
 	void startNewGame();
 
 	~MainWindowToView();
