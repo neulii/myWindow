@@ -53,28 +53,7 @@ void MainWindowToView::enterInputClick(wxCommandEvent& event)
 			//std::cout << error.what() << std::endl;
 		}
 
-		//add values to players
-
-		game->addPointsFromRound(points_pOne, points_pTwo);
-
-		m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
-		m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
 		
-		m_playerOneInput->Clear();
-		m_playerTwoInput->Clear();
-		
-		//insert row in the top 
-		m_pointTable->InsertRows(game->getPlayedRounds(),1);
-		
-		m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
-		m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
-		m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
-
-		m_pointTable->SendSizeEventToParent();
-
-		m_playerOneInput->SetFocus();
-	
-		game->nextRound();
 	}
 	//if input fields empty
 	else
@@ -156,33 +135,94 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 	int points_pTwo = 0;
 	int points_pOne = 0;
 
-	std::cout << event.GetId() << std::endl;
-	//get input from field
-	input_one = static_cast<std::string>(m_playerOneInput->GetValue());
-
-	//check if infput is valid
-
-	if(!CheckIfCorrectValue(input_one))
+	if(event.GetId()==ID_PLAYER_ONE)
 	{
-		std::cout << "input one is not valid" << std::endl;
-		m_playerOneInput->SetSelection(0, input_one.length());
-		return;
+		input_one = static_cast<std::string>(m_playerOneInput->GetValue());
 
-	}
-	
+		//if not valid return
+		if(!CheckIfCorrectValue(input_one))
+		{
+			std::cout << "input one is not valid" << std::endl;
+			m_playerOneInput->SetSelection(0, input_one.length());
+			return;
+
+		}
+		else
+		{
+			std::cout << "input valid" << std::endl;
+			m_playerTwoInput->SetFocus();
+		}
+	}	
+
 	//check input two if correct input
 
+	if(event.GetId()==ID_PLAYER_TWO)
+	{
+		input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
+		input_one = static_cast<std::string>(m_playerOneInput->GetValue());
 
-	
-	input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
+		if(!CheckIfCorrectValue(input_two))
+		{
+			std::cout << "input two is not valid" << std::endl;
+			m_playerTwoInput->SetSelection(0, input_two.length());
+			return;
+		}
+		else
+		{
+			//when input field 2 is ok check input field one for safety
+			std::cout << input_one << std::endl;
+			if(CheckIfCorrectValue(input_one))
+			{
+				std::cout << "add to points" << std::endl;
 
-	std::cout << input_one << "    " << input_two << std::endl;
+				//convert input to int
+			
+				points_pOne = std::stoi(input_one);
+				points_pTwo = std::stoi(input_two);
+
+				//add values to players
+
+				game->addPointsFromRound(points_pOne, points_pTwo);
+
+				m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
+				m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
+				
+				m_playerOneInput->Clear();
+				m_playerTwoInput->Clear();
+				
+				//insert row in the top 
+				m_pointTable->InsertRows(game->getPlayedRounds(),1);
+				
+				m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
+				m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
+				m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
+
+				m_pointTable->SendSizeEventToParent();
+
+				m_playerOneInput->SetFocus();
+			
+				game->nextRound();
+
+			}
+			else
+			{
+				std::cout << "input two is not valid" << std::endl;
+				m_playerOneInput->SetFocus();
+				m_playerOneInput->SetSelection(0, input_one.length());
+				return;
+			}
+		}
+	}
 
 	event.Skip(); 
 }
 
 bool MainWindowToView::CheckIfCorrectValue(std::string value)
 {
+	if(value.empty())
+		return false;
+
+
 	int digitsInString = 0;
 	int stringLength = value.length();
 
