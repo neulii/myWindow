@@ -156,6 +156,7 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 	int points_pTwo = 0;
 	int points_pOne = 0;
 
+	std::cout << event.GetId() << std::endl;
 	//get input from field
 	input_one = static_cast<std::string>(m_playerOneInput->GetValue());
 
@@ -163,12 +164,12 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 
 	if(!CheckIfCorrectValue(input_one))
 	{
-		std::cout << "input is not valid" << std::endl;
-		m_playerOneInput->Clear();
+		std::cout << "input one is not valid" << std::endl;
+		m_playerOneInput->SetSelection(0, input_one.length());
 		return;
 
 	}
-
+	
 	//check input two if correct input
 
 
