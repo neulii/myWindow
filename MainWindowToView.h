@@ -16,10 +16,6 @@ private:
 public:
 	MainWindowToView();
 
-	//button action
-	
-	//virtual void enterInputClick(wxCommandEvent& event);
-
 	//Menu actions
 
 	virtual void evt_NewGameClicked(wxCommandEvent& event);
