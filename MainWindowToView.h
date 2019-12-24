@@ -28,8 +28,8 @@ public:
 	virtual void evt_exitProgramClicked(wxCommandEvent& event); 
 	virtual void evt_aboutClicked(wxCommandEvent& event); 
 	virtual void evt_enterInInputfield(wxCommandEvent& event);
+	virtual void evt_activateWindow(wxActivateEvent& event);
 
-	
 	bool CheckIfCorrectValue(std::string value);
 	void startNewGame();
 	void addPointsAndupdateGui();

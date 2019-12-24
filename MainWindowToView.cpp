@@ -149,7 +149,7 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		}
 		else
 		{
-			std::cout << "input valid" << std::endl;
+			//std::cout << "input valid" << std::endl;
 			m_playerTwoInput->SetFocus();
 		}
 	}	
@@ -198,10 +198,28 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 	event.Skip(); 
 }
 
+void MainWindowToView::evt_activateWindow(wxActivateEvent& event)
+{
+	if (event.GetActive())
+	{
+		
+		m_playerOneInput->SetFocus();
+	
+		//m_playerOneInput->SetSelection(0, m_playerOneInput->GetValue().length());
+
+	}
+
+	event.Skip();
+}
+
 void MainWindowToView::addPointsAndupdateGui() {
+
+
 	m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
 	m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
 	
+	int playerOnePoints = game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds());
+	int playerTwoPoints = game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds());
 
 	m_playerOneInput->Clear();
 	m_playerTwoInput->Clear();
@@ -209,6 +227,26 @@ void MainWindowToView::addPointsAndupdateGui() {
 	//insert row in the top 
 	m_pointTable->InsertRows(game->getPlayedRounds(), 1);
 
+	//mark winner in table
+
+
+	if (playerOnePoints > playerTwoPoints)
+	{
+		std::cout << game->getPlayers().at(0)->getPlayerName() << " wins!!" << std::endl;
+		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 0, *wxGREEN);
+	}
+	if (playerTwoPoints > playerOnePoints)
+	{
+		std::cout << game->getPlayers().at(1)->getPlayerName() << " wins!!" << std::endl;
+		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 1, *wxGREEN);
+	}
+	if (playerTwoPoints == playerOnePoints)
+	{
+		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 0, *wxYELLOW);
+		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 1, *wxYELLOW);
+	}
+
+	
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
 	m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
