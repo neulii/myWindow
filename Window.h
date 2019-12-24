@@ -17,12 +17,11 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 #include <wx/textctrl.h>
+#include <wx/grid.h>
+#include <wx/statusbr.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/button.h>
-#include <wx/grid.h>
-#include <wx/statusbr.h>
 #include <wx/menu.h>
 #include <wx/frame.h>
 
@@ -46,7 +45,6 @@ class Window : public wxFrame
 		wxStaticText* m_playerTwoNameText;
 		wxTextCtrl* m_playerOneInput;
 		wxTextCtrl* m_playerTwoInput;
-		wxButton* m_EnterInput;
 		wxGrid* m_pointTable;
 		wxStatusBar* m_statusBar;
 		wxMenuBar* m_menubar;
@@ -56,7 +54,6 @@ class Window : public wxFrame
 		// Virtual event handlers, overide them in your derived class
 		virtual void evt_activateWindow( wxActivateEvent& event ) { event.Skip(); }
 		virtual void evt_enterInInputfield( wxCommandEvent& event ) { event.Skip(); }
-		virtual void enterInputClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_NewGameClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_loadFileClicked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void evt_saveFileClicked( wxCommandEvent& event ) { event.Skip(); }

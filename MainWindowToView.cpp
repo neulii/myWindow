@@ -22,56 +22,6 @@ MainWindowToView::~MainWindowToView() {
 
 }
 
-//void MainWindowToView::enterInputClick(wxCommandEvent& event)
-//{ 
-//	std::string input_one;
-//	std::string input_two;
-//	int points_pTwo;
-//	int points_pOne;
-//
-//	//check input if empty
-//	if (!(m_playerOneInput->GetValue().IsEmpty() || m_playerTwoInput->GetValue().IsEmpty()))
-//	{
-//		try
-//		{
-//			//get numbers from inputfield
-//			input_one = static_cast<std::string>(m_playerOneInput->GetValue());
-//			input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
-//
-//			//convert input to int
-//			
-//			points_pOne = std::stoi(input_one);
-//			points_pTwo = std::stoi(input_two);
-//			
-//			//std::cout << points_pOne << "    " << points_pTwo << std::endl;
-//		}
-//		catch (const std::exception& error)
-//		{
-//			std::cout << "fehler beim auslesen!  " << error.what() << std::endl;
-//			
-//			return;
-//			//std::cout << error.what() << std::endl;
-//		}
-//
-//		
-//	}
-//	//if input fields empty
-//	else
-//	{
-//		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
-//		if (m_playerOneInput->IsEmpty())
-//		{
-//			m_playerOneInput->SetFocus();
-//		}
-//		else
-//		{
-//			m_playerTwoInput->SetFocus();
-//		}
-//	}
-//	
-//	event.Skip(); 
-//}
-
 void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)
 {	
 	std::cout << "new game menu clicked" << std::endl;
