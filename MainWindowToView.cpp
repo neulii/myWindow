@@ -219,7 +219,7 @@ bool MainWindowToView::CheckIfCorrectValue(std::string value)
 
 	for(int i = 0; i<stringLength; i++)
 	{
-		if(!isdigit(value.at(i)))
+		if(!(isdigit(value.at(i)) || (value.at(i) == '-')))
 		{
 			return false;
 		}
