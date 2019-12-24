@@ -17,7 +17,8 @@ public:
 	MainWindowToView();
 
 	//button action
-	virtual void enterInputClick(wxCommandEvent& event);
+	
+	//virtual void enterInputClick(wxCommandEvent& event);
 
 	//Menu actions
 
@@ -31,6 +32,7 @@ public:
 	
 	bool CheckIfCorrectValue(std::string value);
 	void startNewGame();
+	void addPointsAndupdateGui();
 
 	~MainWindowToView();
 };

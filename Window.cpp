@@ -94,9 +94,11 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxVERTICAL );
 
-	m_EnterInput = new wxButton( this, wxID_OK, wxT("Punkte Eintragen"), wxDefaultPosition, wxDefaultSize, 0 );
+	// Button disabled 
+
+	/*m_EnterInput = new wxButton( this, wxID_OK, wxT("Punkte Eintragen"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_EnterInput->Enable( false );
-	m_EnterInput->SetMinSize( wxSize( 210,-1 ) );
+	m_EnterInput->SetMinSize( wxSize( 210,-1 ) );*/
 
 	bSizer14->Add( m_EnterInput, 0, wxALL, 5 );
 
@@ -182,7 +184,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	// Connect Events
 	m_playerOneInput->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( Window::evt_enterInInputfield ), NULL, this );
 	m_playerTwoInput->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( Window::evt_enterInInputfield ), NULL, this );
-	m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
+	//m_EnterInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_NewGameClicked ), this, m_menuNewGame->GetId());
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_loadFileClicked ), this, m_menuLoadFile->GetId());
 	m_fileMenu->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( Window::evt_saveFileClicked ), this, m_menuSave->GetId());
@@ -195,6 +197,6 @@ Window::~Window()
 	// Disconnect Events
 	m_playerOneInput->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( Window::evt_enterInInputfield ), NULL, this );
 	m_playerTwoInput->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( Window::evt_enterInInputfield ), NULL, this );
-	m_EnterInput->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
+	//m_EnterInput->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Window::enterInputClick ), NULL, this );
 
 }

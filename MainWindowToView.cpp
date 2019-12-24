@@ -22,55 +22,55 @@ MainWindowToView::~MainWindowToView() {
 
 }
 
-void MainWindowToView::enterInputClick(wxCommandEvent& event)
-{ 
-	std::string input_one;
-	std::string input_two;
-	int points_pTwo;
-	int points_pOne;
-
-	//check input if empty
-	if (!(m_playerOneInput->GetValue().IsEmpty() || m_playerTwoInput->GetValue().IsEmpty()))
-	{
-		try
-		{
-			//get numbers from inputfield
-			input_one = static_cast<std::string>(m_playerOneInput->GetValue());
-			input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
-
-			//convert input to int
-			
-			points_pOne = std::stoi(input_one);
-			points_pTwo = std::stoi(input_two);
-			
-			//std::cout << points_pOne << "    " << points_pTwo << std::endl;
-		}
-		catch (const std::exception& error)
-		{
-			std::cout << "fehler beim auslesen!  " << error.what() << std::endl;
-			
-			return;
-			//std::cout << error.what() << std::endl;
-		}
-
-		
-	}
-	//if input fields empty
-	else
-	{
-		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
-		if (m_playerOneInput->IsEmpty())
-		{
-			m_playerOneInput->SetFocus();
-		}
-		else
-		{
-			m_playerTwoInput->SetFocus();
-		}
-	}
-	
-	event.Skip(); 
-}
+//void MainWindowToView::enterInputClick(wxCommandEvent& event)
+//{ 
+//	std::string input_one;
+//	std::string input_two;
+//	int points_pTwo;
+//	int points_pOne;
+//
+//	//check input if empty
+//	if (!(m_playerOneInput->GetValue().IsEmpty() || m_playerTwoInput->GetValue().IsEmpty()))
+//	{
+//		try
+//		{
+//			//get numbers from inputfield
+//			input_one = static_cast<std::string>(m_playerOneInput->GetValue());
+//			input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
+//
+//			//convert input to int
+//			
+//			points_pOne = std::stoi(input_one);
+//			points_pTwo = std::stoi(input_two);
+//			
+//			//std::cout << points_pOne << "    " << points_pTwo << std::endl;
+//		}
+//		catch (const std::exception& error)
+//		{
+//			std::cout << "fehler beim auslesen!  " << error.what() << std::endl;
+//			
+//			return;
+//			//std::cout << error.what() << std::endl;
+//		}
+//
+//		
+//	}
+//	//if input fields empty
+//	else
+//	{
+//		std::cout << "bitte beide felder ausfuellen!!!" << std::endl;
+//		if (m_playerOneInput->IsEmpty())
+//		{
+//			m_playerOneInput->SetFocus();
+//		}
+//		else
+//		{
+//			m_playerTwoInput->SetFocus();
+//		}
+//	}
+//	
+//	event.Skip(); 
+//}
 
 void MainWindowToView::evt_NewGameClicked(wxCommandEvent& event)
 {	
@@ -87,7 +87,7 @@ void MainWindowToView::startNewGame()
 	m_playerTwoNameText->Enable();
 	m_playerOneInput->Enable();
 	m_playerTwoInput->Enable();
-	m_EnterInput->Enable();
+	//m_EnterInput->Enable();
 	m_pointTable->Enable();
 	m_winningPoints->Enable();
 
@@ -181,27 +181,8 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 				points_pTwo = std::stoi(input_two);
 
 				//add values to players
-
 				game->addPointsFromRound(points_pOne, points_pTwo);
-
-				m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
-				m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
-				
-				m_playerOneInput->Clear();
-				m_playerTwoInput->Clear();
-				
-				//insert row in the top 
-				m_pointTable->InsertRows(game->getPlayedRounds(),1);
-				
-				m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
-				m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
-				m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
-
-				m_pointTable->SendSizeEventToParent();
-
-				m_playerOneInput->SetFocus();
-			
-				game->nextRound();
+				addPointsAndupdateGui();
 
 			}
 			else
@@ -215,6 +196,28 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 	}
 
 	event.Skip(); 
+}
+
+void MainWindowToView::addPointsAndupdateGui() {
+	m_pointsPlayerOneDisplay->SetLabelText(std::to_string(game->getPlayers().at(0)->getPoints()));
+	m_pointsPlayerTwoDisplay->SetLabelText(std::to_string(game->getPlayers().at(1)->getPoints()));
+	
+
+	m_playerOneInput->Clear();
+	m_playerTwoInput->Clear();
+
+	//insert row in the top 
+	m_pointTable->InsertRows(game->getPlayedRounds(), 1);
+
+	m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
+	m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
+	m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
+
+	m_pointTable->SendSizeEventToParent();
+
+	m_playerOneInput->SetFocus();
+
+	game->nextRound();
 }
 
 bool MainWindowToView::CheckIfCorrectValue(std::string value)
