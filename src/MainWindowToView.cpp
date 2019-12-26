@@ -1,5 +1,6 @@
 #include "MainWindowToView.h"
 #include <iostream>
+#include "add.h"
 
 MainWindowToView::MainWindowToView() :Window(nullptr){
 	m_statusBar->SetStatusText( "erstes",0);
@@ -90,7 +91,7 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		input_one = static_cast<std::string>(m_playerOneInput->GetValue());
 
 		//if not valid return
-		if(!CheckIfCorrectValue(input_one))
+		if(!neulib::checkIfStringIsValidNumber(input_one))
 		{
 			std::cout << "input one is not valid" << std::endl;
 			m_playerOneInput->SetSelection(0, input_one.length());
@@ -111,7 +112,7 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		input_two = static_cast<std::string>(m_playerTwoInput->GetValue());
 		input_one = static_cast<std::string>(m_playerOneInput->GetValue());
 
-		if(!CheckIfCorrectValue(input_two))
+		if(!neulib::checkIfStringIsValidNumber(input_two))
 		{
 			std::cout << "input two is not valid" << std::endl;
 			m_playerTwoInput->SetSelection(0, input_two.length());
@@ -121,7 +122,7 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		{
 			//when input field 2 is ok check input field one for safety
 			std::cout << input_one << std::endl;
-			if(CheckIfCorrectValue(input_one))
+			if(neulib::checkIfStringIsValidNumber(input_one))
 			{
 				std::cout << "add to points" << std::endl;
 
@@ -206,33 +207,4 @@ void MainWindowToView::addPointsAndupdateGui() {
 	m_playerOneInput->SetFocus();
 
 	game->nextRound();
-}
-
-bool MainWindowToView::CheckIfCorrectValue(std::string value)
-{
-	if(value.empty())
-		return false;
-
-
-	int digitsInString = 0;
-	int stringLength = value.length();
-
-	for(int i = 0; i<stringLength; i++)
-	{
-		if(!(isdigit(value.at(i)) || (value.at(i) == '-')))
-		{
-			return false;
-		}
-		else
-		{
-			digitsInString++;
-		}		
-	}
-
-	if(digitsInString == value.length())
-	{
-		return true;
-	}
-	else 
-		return false;
 }
