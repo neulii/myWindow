@@ -1,6 +1,6 @@
 #include "MainWindowToView.h"
 #include <iostream>
-#include "add.h"
+#include "main_lib.h"
 
 MainWindowToView::MainWindowToView() :Window(nullptr){
 	m_statusBar->SetStatusText( "erstes",0);
