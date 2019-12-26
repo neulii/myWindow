@@ -19,20 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cApp.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="MainWindowToView.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="src\cApp.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\MainWindow.cpp" />
+    <ClCompile Include="src\MainWindowToView.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cApp.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="MainWindow.h" />
-    <ClInclude Include="MainWindowToView.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="include\cApp.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\MainWindow.h" />
+    <ClInclude Include="include\MainWindowToView.h" />
+    <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\neulib\neulib\neulib.vcxproj">
@@ -93,19 +93,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\neulii\Desktop\myWindow\include;C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\neulii\Desktop\myWindow\include;C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\neulii\Desktop\myWindow\include;C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\neulii\Desktop\myWindow\include;C:\Users\neulii\Desktop\neulib\neulib\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

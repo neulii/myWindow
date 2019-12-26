@@ -15,42 +15,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cApp.cpp">
+    <ClCompile Include="src\MainWindowToView.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
+    <ClCompile Include="src\MainWindow.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindowToView.cpp">
+    <ClCompile Include="src\cApp.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cApp.h">
+    <ClInclude Include="include\Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="MainWindow.h">
+    <ClInclude Include="include\Player.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="include\MainWindowToView.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="MainWindowToView.h">
+    <ClInclude Include="include\MainWindow.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="include\Game.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="include\cApp.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
