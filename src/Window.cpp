@@ -39,6 +39,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_pointsPlayerOneDisplay = new wxStaticText( this, wxID_ANY, wxT("0"), wxDefaultPosition, wxSize( 100,-1 ), wxALIGN_CENTER_HORIZONTAL );
 	m_pointsPlayerOneDisplay->Wrap( -1 );
 	m_pointsPlayerOneDisplay->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	m_pointsPlayerOneDisplay->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_APPWORKSPACE ) );
 	m_pointsPlayerOneDisplay->Enable( false );
 
 	bSizer16->Add( m_pointsPlayerOneDisplay, 0, wxALL, 5 );
@@ -46,6 +47,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_pointsPlayerTwoDisplay = new wxStaticText( this, wxID_ANY, wxT("0"), wxDefaultPosition, wxSize( 100,-1 ), wxALIGN_CENTER_HORIZONTAL );
 	m_pointsPlayerTwoDisplay->Wrap( -1 );
 	m_pointsPlayerTwoDisplay->SetFont( wxFont( 18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	m_pointsPlayerTwoDisplay->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_APPWORKSPACE ) );
 	m_pointsPlayerTwoDisplay->Enable( false );
 
 	bSizer16->Add( m_pointsPlayerTwoDisplay, 1, wxALL|wxEXPAND, 5 );

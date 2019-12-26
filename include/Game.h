@@ -14,6 +14,9 @@ private:
 	int playedRounds = 0;
 	int diffPointsLastRound = 0;
 
+	Player* cardMixerPlayer = nullptr;
+
+
 	int winningPoints;
 
 	bool gameIsOver = false;
@@ -29,6 +32,8 @@ public:
 
 	int getPlayedRounds();
 	void nextRound();
+
+	const Player* getCardMixerPlayer();
 
 	Player* checkIfWon();
 };

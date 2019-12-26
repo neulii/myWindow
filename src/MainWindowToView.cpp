@@ -46,6 +46,8 @@ void MainWindowToView::startNewGame()
 	game = new Game(playerOneName, playerTwoName, 500);
 
 	m_playerOneNameText->SetLabel(playerOneName);
+	//m_playerOneNameText->SetBackgroundColour(*wxRED);
+	m_pointsPlayerOneDisplay->SetBackgroundColour(*wxGREEN);
 	m_playerTwoNameText->SetLabel(playerTwoName);
 
 	//set winning points to label
@@ -59,9 +61,6 @@ void MainWindowToView::startNewGame()
 	m_pointTable->SetColLabelValue(2, "Diff");
 	m_pointTable->SetMinSize(wxSize(247, -1));
 
-
-	
-	
 	m_playerOneInput->SetFocus();
 }
 
@@ -140,6 +139,12 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 
 				//add values to players
 				game->addPointsFromRound(points_pOne, points_pTwo);
+
+				wxColor tempColor = m_pointsPlayerTwoDisplay->GetBackgroundColour();
+	m_pointsPlayerTwoDisplay->SetBackgroundColour(m_pointsPlayerOneDisplay->GetBackgroundColour());
+	m_pointsPlayerOneDisplay->SetBackgroundColour(tempColor);
+
+	std::cout << "change color" << std::endl;
 				addPointsAndupdateGui();
 
 			}
@@ -211,9 +216,12 @@ void MainWindowToView::addPointsAndupdateGui() {
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 2, std::to_string(game->getDiffPointsLastRound()));
 	m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
 
-	m_pointTable->SendSizeEventToParent();
 
 	m_playerOneInput->SetFocus();
+
+	
+	m_pointTable->SendSizeEventToParent();
+
 
 	game->nextRound();
 }

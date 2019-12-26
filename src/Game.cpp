@@ -8,6 +8,9 @@ Game::Game(std::string playerNameOne, std::string playerNameTwo, int winningPoin
 
 	players.push_back(playerOne);
 	players.push_back(playerTwo);
+
+	cardMixerPlayer = players.at(0);
+
 }
 
 void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
@@ -59,6 +62,14 @@ int Game::getPlayedRounds()
 void Game::nextRound()
 {
 	playedRounds++;
+	//change cardmixer player
+	cardMixerPlayer = players.at(playedRounds % players.size());
+	std::cout << cardMixerPlayer->getPlayerName() << std::endl;
+}
+
+const Player* Game::getCardMixerPlayer()
+{
+	return cardMixerPlayer;
 }
 
 int Game::getDiffPointsLastRound()
