@@ -53,8 +53,15 @@ void MainWindowToView::startNewGame()
 
 	std::string test = game->getPlayers().at(0)->getPlayerName();
 
+	//tabellen beschriftung
 	m_pointTable->SetColLabelValue(0,game->getPlayers().at(0)->getPlayerName());
 	m_pointTable->SetColLabelValue(1,game->getPlayers().at(1)->getPlayerName());
+	m_pointTable->SetColLabelValue(2, "Diff");
+	m_pointTable->SetMinSize(wxSize(247, -1));
+
+
+	
+	
 	m_playerOneInput->SetFocus();
 }
 
@@ -200,6 +207,8 @@ void MainWindowToView::addPointsAndupdateGui() {
 	
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 0, std::to_string(game->getPlayers().at(0)->getPlayerPointList().at(game->getPlayedRounds())));
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 1, std::to_string(game->getPlayers().at(1)->getPlayerPointList().at(game->getPlayedRounds())));
+	
+	m_pointTable->SetCellValue(game->getPlayedRounds(), 2, std::to_string(game->getDiffPointsLastRound()));
 	m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
 
 	m_pointTable->SendSizeEventToParent();

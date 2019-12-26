@@ -106,7 +106,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_pointTable = new wxGrid( this, wxID_ANY, wxDefaultPosition, wxSize( 300,-1 ), 0 );
 
 	// Grid
-	m_pointTable->CreateGrid( 0, 2 );
+	m_pointTable->CreateGrid( 0, 3 );
 	m_pointTable->EnableEditing( false );
 	m_pointTable->EnableGridLines( true );
 	m_pointTable->EnableDragGridSize( false );
@@ -115,6 +115,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	// Columns
 	m_pointTable->SetColSize( 0, 65 );
 	m_pointTable->SetColSize( 1, 65 );
+	m_pointTable->SetColSize( 2, 65 );
 	m_pointTable->EnableDragColMove( false );
 	m_pointTable->EnableDragColSize( false );
 	m_pointTable->SetColLabelSize( 30 );
@@ -130,7 +131,7 @@ Window::Window( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	// Cell Defaults
 	m_pointTable->SetDefaultCellAlignment( wxALIGN_CENTER, wxALIGN_CENTER );
 	m_pointTable->Enable( false );
-	m_pointTable->SetMinSize( wxSize( 200,-1 ) );
+	m_pointTable->SetMinSize( wxSize( 300,-1 ) );
 
 	bSizer12->Add( m_pointTable, 0, wxALL, 5 );
 

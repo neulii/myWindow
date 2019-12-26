@@ -15,6 +15,9 @@ void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
 	playerOne->addPoints(playerOnePoints);
 	playerTwo->addPoints(playerTwoPoints);
 
+	//absolutwert von differenz
+	diffPointsLastRound = abs(playerTwoPoints - playerOnePoints);
+
 	if (!(checkIfWon() == nullptr))
 	{
 		gameIsOver = true;
@@ -56,4 +59,9 @@ int Game::getPlayedRounds()
 void Game::nextRound()
 {
 	playedRounds++;
+}
+
+int Game::getDiffPointsLastRound()
+{
+	return diffPointsLastRound;
 }

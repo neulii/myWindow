@@ -12,6 +12,7 @@ private:
 	std::vector<Player*> players;
 
 	int playedRounds = 0;
+	int diffPointsLastRound = 0;
 
 	int winningPoints;
 
@@ -23,6 +24,8 @@ public:
 	void addPointsFromRound(int playerOnePoints, int playerTwoPoints);
 	int getWinningPoints();
 	std::vector<Player*> &getPlayers();
+
+	int getDiffPointsLastRound();
 
 	int getPlayedRounds();
 	void nextRound();
