@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include <iostream>
 #include <wx/log.h>
+#include "main_lib.h"
 
 #include <fstream>
 
@@ -30,47 +31,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::OnLeftButton(wxCommandEvent& event)
 {
-	addTextToFile("hallo das ist ein test\n","test.txt");
+	neulib::addTextToFile("hallo das ist ein test\n","test.txt");
 }
 
 std::string MainWindow::getTextFromFile(const std::string& fileName) {
-
-	std::string inputText;
-	std::string line;
 	
-	std::ifstream input;
-
-	input.open(fileName, std::ios_base::in);
-	
-	while (std::getline(input, line)) {
-		inputText = inputText + "\n" + line;
-	}
-	
-	input.close();
-
-	return  inputText;
+	return neulib::getTextFromFile(fileName);
 }
 
 void MainWindow::addTextToFile(const std::string& text, const std::string &fileName) {
 	
-	std::ofstream output;
-
-	output.open(fileName, std::ios_base::out | std::ios_base::app);
-
-	if (output.is_open()) {
-		output << text;
-		output.close();
-		std::cout << std::endl << "Text written to File" << std::endl;
-	}
-
-	else {
-		std::cout << "Error by Opening File" << std::endl;
-	}
-
+	neulib::addTextToFile(text, fileName);
+	
 }
 
 void MainWindow::OnRightButton(wxCommandEvent& event)
 {
-	std::string text = getTextFromFile("test.txt");
+	std::string text = neulib::getTextFromFile("test.txt");
 	std::cout << text;
 }
