@@ -13,6 +13,7 @@ private:
 
 	int playedRounds = 0;
 	int diffPointsLastRound = 0;
+	int diffPoints = 0;
 
 	Player* cardMixerPlayer = nullptr;
 
@@ -29,6 +30,7 @@ public:
 	std::vector<Player*> &getPlayers();
 
 	int getDiffPointsLastRound();
+	int getDiffPoints();
 
 	int getPlayedRounds();
 	void nextRound();

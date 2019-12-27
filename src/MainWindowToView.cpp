@@ -51,7 +51,7 @@ void MainWindowToView::startNewGame()
 	m_playerTwoNameText->SetLabel(playerTwoName);
 
 	//set winning points to label
-	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints()));
+	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints())+ " / 0");
 
 	std::string test = game->getPlayers().at(0)->getPlayerName();
 
@@ -127,10 +127,10 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		else
 		{
 			//when input field 2 is ok check input field one for safety
-			std::cout << input_one << std::endl;
+			//std::cout << input_one << std::endl;
 			if(neulib::checkIfStringIsValidNumber(input_one))
 			{
-				std::cout << "add to points" << std::endl;
+				//std::cout << "add to points" << std::endl;
 
 				//convert input to int
 			
@@ -141,10 +141,9 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 				game->addPointsFromRound(points_pOne, points_pTwo);
 
 				wxColor tempColor = m_pointsPlayerTwoDisplay->GetBackgroundColour();
-	m_pointsPlayerTwoDisplay->SetBackgroundColour(m_pointsPlayerOneDisplay->GetBackgroundColour());
-	m_pointsPlayerOneDisplay->SetBackgroundColour(tempColor);
+				m_pointsPlayerTwoDisplay->SetBackgroundColour(m_pointsPlayerOneDisplay->GetBackgroundColour());
+				m_pointsPlayerOneDisplay->SetBackgroundColour(tempColor);
 
-	std::cout << "change color" << std::endl;
 				addPointsAndupdateGui();
 
 			}
@@ -158,6 +157,9 @@ void MainWindowToView::evt_enterInInputfield(wxCommandEvent& event)
 		}
 	}
 
+	//set actual points in label
+	m_winningPoints->SetLabel(std::to_string(game->getWinningPoints()) + " / " + std::to_string(game->getDiffPoints()));
+	
 	event.Skip(); 
 }
 
@@ -195,12 +197,12 @@ void MainWindowToView::addPointsAndupdateGui() {
 
 	if (playerOnePoints > playerTwoPoints)
 	{
-		std::cout << game->getPlayers().at(0)->getPlayerName() << " wins!!" << std::endl;
+		//std::cout << game->getPlayers().at(0)->getPlayerName() << " wins!!" << std::endl;
 		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 0, *wxGREEN);
 	}
 	if (playerTwoPoints > playerOnePoints)
 	{
-		std::cout << game->getPlayers().at(1)->getPlayerName() << " wins!!" << std::endl;
+		//std::cout << game->getPlayers().at(1)->getPlayerName() << " wins!!" << std::endl;
 		m_pointTable->SetCellBackgroundColour(game->getPlayedRounds(), 1, *wxGREEN);
 	}
 	if (playerTwoPoints == playerOnePoints)
@@ -215,6 +217,7 @@ void MainWindowToView::addPointsAndupdateGui() {
 	
 	m_pointTable->SetCellValue(game->getPlayedRounds(), 2, std::to_string(game->getDiffPointsLastRound()));
 	m_pointTable->MakeCellVisible(game->getPlayedRounds(), 0);
+
 
 
 	m_playerOneInput->SetFocus();

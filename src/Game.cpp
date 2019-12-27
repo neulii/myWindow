@@ -64,7 +64,10 @@ void Game::nextRound()
 	playedRounds++;
 	//change cardmixer player
 	cardMixerPlayer = players.at(playedRounds % players.size());
-	std::cout << cardMixerPlayer->getPlayerName() << std::endl;
+
+	diffPoints = abs(playerOne->getPoints() - playerTwo->getPoints());
+
+	//std::cout << cardMixerPlayer->getPlayerName() << std::endl;
 }
 
 const Player* Game::getCardMixerPlayer()
@@ -75,4 +78,9 @@ const Player* Game::getCardMixerPlayer()
 int Game::getDiffPointsLastRound()
 {
 	return diffPointsLastRound;
+}
+
+int Game::getDiffPoints()
+{
+	return diffPoints;
 }
