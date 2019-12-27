@@ -343,3 +343,4 @@ test.txt
 *.o
 window
 tags
+/save.txt

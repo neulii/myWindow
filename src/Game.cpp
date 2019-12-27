@@ -13,6 +13,10 @@ Game::Game(std::string playerNameOne, std::string playerNameTwo, int winningPoin
 
 }
 
+Game::Game() :Game("noname", "noname", 1000) {
+
+}
+
 void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
 {
 	playerOne->addPoints(playerOnePoints);
@@ -83,4 +87,22 @@ int Game::getDiffPointsLastRound()
 int Game::getDiffPoints()
 {
 	return diffPoints;
+}
+
+std::string Game::getSerializeString()
+{
+	std::string toWrite;
+
+	//write on beginning the number of players
+	toWrite.append(std::to_string(players.size()) + "\n");
+
+	for (int i = 0; i < players.size(); i++)
+	{
+		toWrite.append(players.at(i)->getSerializeString());
+	}
+
+	toWrite.append(std::to_string(playedRounds) + "\n");
+	toWrite.append(cardMixerPlayer->getPlayerName());
+	
+	return toWrite;
 }

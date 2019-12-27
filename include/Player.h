@@ -18,4 +18,12 @@ public:
 	std::string getPlayerName();
 
 	std::vector<int>& getPlayerPointList();
+
+	/* the data from one player is stored in one line:
+
+		playername; totalpoints; points,points,points;
+
+		e.g. neulii;200; 50,50,50,50,50,50,50,50;
+	*/
+	std::string getSerializeString();
 };

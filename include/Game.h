@@ -17,7 +17,6 @@ private:
 
 	Player* cardMixerPlayer = nullptr;
 
-
 	int winningPoints;
 
 	bool gameIsOver = false;
@@ -25,6 +24,8 @@ private:
 public:
 
 	Game(std::string playerNameOne, std::string playerNameTwo, int winningPoints);
+	Game();
+
 	void addPointsFromRound(int playerOnePoints, int playerTwoPoints);
 	int getWinningPoints();
 	std::vector<Player*> &getPlayers();
@@ -38,4 +39,7 @@ public:
 	const Player* getCardMixerPlayer();
 
 	Player* checkIfWon();
+
+	std::string getSerializeString();
+
 };

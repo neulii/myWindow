@@ -37,3 +37,32 @@ int Player::getPoints()
 std::string Player::getPlayerName() {
 	return playerName;
 }
+
+
+/* the data from one player is stored in one line:
+
+		playername; totalpoints; points,points,points;
+
+		neulii;200; 50,50,50,50,50,50,50,50;
+
+*/
+std::string Player::getSerializeString()
+{
+	std::string toWrite;
+
+	toWrite.append(playerName);
+	toWrite.append(";");
+	toWrite.append(std::to_string(playerPoints));
+	toWrite.append(";");
+
+	for (int i = 0; i < pointList.size(); i++)
+	{
+		toWrite.append(std::to_string(pointList.at(i)));
+		toWrite.append(",");
+	}
+
+	toWrite.pop_back();
+	toWrite.append("\n");
+
+	return toWrite;
+}

@@ -1,6 +1,7 @@
 #include "MainWindowToView.h"
 #include <iostream>
 #include "main_lib.h"
+#include <fstream>
 
 MainWindowToView::MainWindowToView() :Window(nullptr){
 	m_statusBar->SetStatusText( "erstes",0);
@@ -66,12 +67,50 @@ void MainWindowToView::startNewGame()
 
 void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
 {
+
+	std::ifstream input;
+	input.open("save.txt", std::ios::in);
+	
+
+	
+
 	std::cout << "load file" << std::endl;
 }
 
 void MainWindowToView::evt_saveFileClicked(wxCommandEvent& event)
+
+
 {
-	std::cout << "save file" << std::endl;
+
+	std::ofstream output;
+
+	output.open("save.txt");
+
+
+	
+
+	/*Player* neulii = new Player("neulii");
+	for (int i = 0; i < 100; i++)
+	{
+		neulii->addPoints(i);
+	}
+
+	toWrite.append(neulii->getPlayerName());
+	toWrite.append(";");
+	toWrite.append(std::to_string(neulii->getPoints()));
+	toWrite.append(";");
+	
+	for (int i = 0; i < neulii->getPlayerPointList().size(); i++)
+	{
+		toWrite.append(std::to_string(neulii->getPlayerPointList().at(i)));
+		toWrite.append(",");
+	}
+
+	toWrite.pop_back();*/
+
+	std::cout <<game->getSerializeString();
+	output << game->getSerializeString();
+
 }
 
 void MainWindowToView::evt_exitProgramClicked(wxCommandEvent& event)
