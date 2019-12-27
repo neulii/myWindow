@@ -67,50 +67,48 @@ void MainWindowToView::startNewGame()
 
 void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
 {
-
-	std::ifstream input;
-	input.open("save.txt", std::ios::in);
+	neulib::log("load");
+	int numbersOfPlayers = 0;
 	
+	Game* loadedGame = new Game();
 
 	
+	std::string saveData = neulib::getTextFromFile("save.txt");
 
-	std::cout << "load file" << std::endl;
+	numbersOfPlayers = atoi(&saveData.at(0));
+	neulib::log(std::to_string(numbersOfPlayers));
+
+	
+	saveData = saveData.substr(1, saveData.length());
+	//neulib::log(saveData);
+
+	for (int i = 0; i <numbersOfPlayers; i++)
+	{
+		int lineSize = saveData.find_first_of("\n",3);
+		neulib::log(std::to_string(lineSize));
+
+	}
+	
+	
+	//split in lines and then line by line analyse
+
+	
+	
 }
 
 void MainWindowToView::evt_saveFileClicked(wxCommandEvent& event)
-
-
 {
-
 	std::ofstream output;
 
 	output.open("save.txt");
 
-
-	
-
-	/*Player* neulii = new Player("neulii");
-	for (int i = 0; i < 100; i++)
-	{
-		neulii->addPoints(i);
-	}
-
-	toWrite.append(neulii->getPlayerName());
-	toWrite.append(";");
-	toWrite.append(std::to_string(neulii->getPoints()));
-	toWrite.append(";");
-	
-	for (int i = 0; i < neulii->getPlayerPointList().size(); i++)
-	{
-		toWrite.append(std::to_string(neulii->getPlayerPointList().at(i)));
-		toWrite.append(",");
-	}
-
-	toWrite.pop_back();*/
-
 	std::cout <<game->getSerializeString();
 	output << game->getSerializeString();
 
+
+	output.close();
+
+	std::cout << "game is saved" << std::endl;
 }
 
 void MainWindowToView::evt_exitProgramClicked(wxCommandEvent& event)
