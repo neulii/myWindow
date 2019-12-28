@@ -5,6 +5,17 @@ Player::Player(std::string name) : playerName(name), playerPoints(0)
 
 }
 
+Player::Player(std::string player, std::vector<int> pointList) : playerName(player), pointList(pointList)
+{
+	playerPoints = 0;
+
+	for (int i = 0; i < pointList.size(); i++)
+	{
+		playerPoints += pointList.at(i);
+	}
+
+}
+
 void Player::addPoints(int points)
 {
 	playerPoints += points;

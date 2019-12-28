@@ -5,12 +5,14 @@
 class Player
 {
 private:
-	int playerPoints;
+	int playerPoints = 0;
 	std::string playerName;
 	std::vector<int> pointList;
 
 public:
 	Player(std::string player);
+	Player(std::string player, std::vector<int> pointList);
+
 	void addPoints(int points);
 	bool subtractPoints(int points);
 

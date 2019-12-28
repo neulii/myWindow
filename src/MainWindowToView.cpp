@@ -2,6 +2,8 @@
 #include <iostream>
 #include "main_lib.h"
 #include <fstream>
+#include <vector>
+
 
 MainWindowToView::MainWindowToView() :Window(nullptr){
 	m_statusBar->SetStatusText( "erstes",0);
@@ -65,32 +67,34 @@ void MainWindowToView::startNewGame()
 	m_playerOneInput->SetFocus();
 }
 
+
+
 void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
-{
-	neulib::log("load");
-	int numbersOfPlayers = 0;
+{	
+	std::vector<std::string> fileData = neulib::getLinesFromFile("save.txt");
 	
+	int numberOfPlayers =std::atoi(fileData.at(0).c_str());
+	int indexOfCardMixerPLayer = std::atoi(fileData.at(4).c_str());
+
+	std::vector<Player*> players;
+
+	//Load players and points
+	for (int i = 1; i <= numberOfPlayers; i++)
+	{
+		int lengthPlayerName = 0;
+		lengthPlayerName = fileData.at(i).find(";");
+		std::string playerName = fileData.at(i).substr(0, lengthPlayerName);
+
+	}
+
+
+
+
+
 	Game* loadedGame = new Game();
 
 	
-	std::string saveData = neulib::getTextFromFile("save.txt");
 
-	numbersOfPlayers = atoi(&saveData.at(0));
-	neulib::log(std::to_string(numbersOfPlayers));
-
-	
-	saveData = saveData.substr(1, saveData.length());
-	//neulib::log(saveData);
-
-	for (int i = 0; i <numbersOfPlayers; i++)
-	{
-		int lineSize = saveData.find_first_of("\n",3);
-		neulib::log(std::to_string(lineSize));
-
-	}
-	
-	
-	//split in lines and then line by line analyse
 
 	
 	

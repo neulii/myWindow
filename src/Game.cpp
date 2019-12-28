@@ -17,6 +17,11 @@ Game::Game() :Game("noname", "noname", 1000) {
 
 }
 
+Game::Game(std::vector<Player*> players, int winningPoints, int playedRounds, Player* cardMixerPlayer) :players(players),winningPoints(winningPoints),playedRounds(playedRounds),cardMixerPlayer(cardMixerPlayer)
+{
+
+}
+
 void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
 {
 	playerOne->addPoints(playerOnePoints);
@@ -102,7 +107,27 @@ std::string Game::getSerializeString()
 	}
 
 	toWrite.append(std::to_string(playedRounds) + "\n");
-	toWrite.append(cardMixerPlayer->getPlayerName());
-	
+	toWrite.append(std::to_string(findPlayer(players,cardMixerPlayer)));
+
 	return toWrite;
 }
+
+int Game::findPlayer(const std::vector<Player*> playerList, const Player* player)
+{
+	int foundAt = -1;
+
+	for (int i = 0; i < playerList.size(); i++)
+	{
+		if (playerList.at(i) == player)
+		{
+			foundAt = i;
+		}
+	}
+
+	return foundAt;
+}
+
+void Game::setCardMixerPlayer(int index) {
+	cardMixerPlayer = players.at(index);
+}
+

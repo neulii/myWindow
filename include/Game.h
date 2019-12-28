@@ -25,6 +25,7 @@ public:
 
 	Game(std::string playerNameOne, std::string playerNameTwo, int winningPoints);
 	Game();
+	Game(std::vector<Player*> players, int winningPoints, int playedRounds, Player* cardMixerPlayer);
 
 	void addPointsFromRound(int playerOnePoints, int playerTwoPoints);
 	int getWinningPoints();
@@ -37,8 +38,12 @@ public:
 	void nextRound();
 
 	const Player* getCardMixerPlayer();
+	int findPlayer(const std::vector<Player*> playerList, const Player* player);
 
 	Player* checkIfWon();
+
+	void setCardMixerPlayer(int index);
+
 
 	std::string getSerializeString();
 
