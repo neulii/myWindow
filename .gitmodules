@@ -1,0 +1,3 @@
+[submodule "neulib"]
+	path = neulib
+	url = https://github.com/neulii/neulib
