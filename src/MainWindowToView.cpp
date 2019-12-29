@@ -75,16 +75,29 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
 	
 	int numberOfPlayers =std::atoi(fileData.at(0).c_str());
 	int indexOfCardMixerPLayer = std::atoi(fileData.at(4).c_str());
-
+	int pointsOfPlayer = 0;
 	std::vector<Player*> players;
 
 	//Load players and points
 	for (int i = 1; i <= numberOfPlayers; i++)
 	{
-		int lengthPlayerName = 0;
-		lengthPlayerName = fileData.at(i).find(";");
-		std::string playerName = fileData.at(i).substr(0, lengthPlayerName);
+		//find playername
+		int lastElement = 0;
+		int lengthElement = 0;
+		int lastSeperator = 0;
+		
+		lengthElement = fileData.at(i).find(";");
+		lastSeperator = lengthElement;
 
+		std::string playerName = fileData.at(i).substr(0, lengthElement);
+		
+		//find playerpoints
+
+		lengthElement = fileData.at(i).find(";",lastSeperator+1)-lastSeperator-1;
+		std::string points = fileData.at(i).substr(lastSeperator+1, lengthElement);
+		
+		pointsOfPlayer = atoi(points.c_str());
+		
 	}
 
 
