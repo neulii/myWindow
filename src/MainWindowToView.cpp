@@ -76,6 +76,7 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event) {
 	int indexOfCardMixerPLayer = std::atoi(fileData.at(4).c_str());
 	int pointsOfPlayer = 0;
 	std::vector<Player*> players;
+	std::vector<int> values;
 
 	//Load players and points
 	for (int i = 1; i <= numberOfPlayers; i++)
@@ -93,25 +94,14 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event) {
 		std::string playerName = subs.at(0);
 		pointsOfPlayer = std::atoi(subs.at(1).c_str());
 
-
-		std::vector<int> values = neulib::splitStringIntoValues(subs.at(2),",");
+		values = neulib::splitStringIntoValues(subs.at(2),",");
 
 		players.push_back(new Player(playerName,values));
-
+		
 	}
 
+	game= new Game(players, 1000, values.size(), players.at(indexOfCardMixerPLayer));
 
-		
-		
-	
-
-	Game* loadedGame = new Game();
-
-	
-
-
-	
-	
 }
 
 void MainWindowToView::evt_saveFileClicked(wxCommandEvent& event)
