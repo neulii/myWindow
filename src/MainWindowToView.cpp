@@ -85,9 +85,9 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event) {
 
 		subs = neulib::splitStringIntoStrings(fileData.at(i), ";");
 
-		for(int i = 0;i<subs.size(); i++)
+		for(int i = 1;i<subs.size(); i++)
 		{
-			std::cout << subs.at(i) << std::endl;
+			std::cout <<subs.at(i) << std::endl;
 		}
 
 		std::string playerName = subs.at(0);
