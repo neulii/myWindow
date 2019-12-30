@@ -69,8 +69,7 @@ void MainWindowToView::startNewGame()
 
 
 
-void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
-{	
+void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event) {	
 	std::vector<std::string> fileData = neulib::getLinesFromFile("save.txt");
 	
 	int numberOfPlayers =std::atoi(fileData.at(0).c_str());
@@ -81,28 +80,30 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event)
 	//Load players and points
 	for (int i = 1; i <= numberOfPlayers; i++)
 	{
-		//find playername
-		int lastElement = 0;
-		int lengthElement = 0;
-		int lastSeperator = 0;
-		
-		lengthElement = fileData.at(i).find(";");
-		lastSeperator = lengthElement;
+		// split player line in file in substrings
+		std::vector<std::string> subs;
 
-		std::string playerName = fileData.at(i).substr(0, lengthElement);
-		
-		//find playerpoints
+		subs = neulib::splitStringIntoStrings(fileData.at(i), ";");
 
-		lengthElement = fileData.at(i).find(";",lastSeperator+1)-lastSeperator-1;
-		std::string points = fileData.at(i).substr(lastSeperator+1, lengthElement);
-		
-		pointsOfPlayer = atoi(points.c_str());
-		
+		for(int i = 0;i<subs.size(); i++)
+		{
+			std::cout << subs.at(i) << std::endl;
+		}
+
+		std::string playerName = subs.at(0);
+		pointsOfPlayer = std::atoi(subs.at(1).c_str());
+
+
+		std::vector<int> values = neulib::splitStringIntoValues(subs.at(2),",");
+
+		players.push_back(new Player(playerName,values));
+
 	}
 
 
-
-
+		
+		
+	
 
 	Game* loadedGame = new Game();
 
