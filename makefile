@@ -3,7 +3,7 @@ OBJS = obj/MainWindow.o obj/cApp.o obj/Window.o obj/MainWindowToView.o obj/Playe
 CXXFLAGS = -Wall -std=c++11 `wx-config --cxxflags` -I "neulib/include" -I "include/"
 LDLIBS   = `wx-config --libs` -L . "neulib/lib/main_lib.lib"
 
-window: $(OBJS)
+window: $(OBJS) neulib/lib/main_lib.lib
 	g++ -o window  $(OBJS) $(CXXFLAGS) $(LDLIBS)  
 
 obj/MainWindow.o: src/MainWindow.cpp include/MainWindow.h 
