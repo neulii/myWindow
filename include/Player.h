@@ -18,6 +18,8 @@ public:
 
 	int getPoints();
 	std::string getPlayerName();
+	void setPlayerName(std::string name);
+
 
 	std::vector<int>& getPlayerPointList();
 
@@ -28,4 +30,7 @@ public:
 		e.g. neulii;200; 50,50,50,50,50,50,50,50;
 	*/
 	std::string getSerializeString();
+
+	void setPlayerPointList(std::vector<int> values);
+
 };

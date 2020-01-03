@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player(std::string name) : playerName(name), playerPoints(0)
 {
@@ -18,6 +19,7 @@ Player::Player(std::string player, std::vector<int> pointList) : playerName(play
 
 void Player::addPoints(int points)
 {
+	
 	playerPoints += points;
 	pointList.push_back(points);
 }
@@ -76,4 +78,14 @@ std::string Player::getSerializeString()
 	toWrite.append("\n");
 
 	return toWrite;
+}
+
+void Player::setPlayerName(std::string name)
+{
+	playerName = name;
+}
+
+void Player::setPlayerPointList(std::vector<int> values)
+{
+	pointList = values;
 }

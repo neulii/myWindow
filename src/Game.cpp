@@ -19,14 +19,20 @@ Game::Game() :Game("noname", "noname", 1000) {
 
 Game::Game(std::vector<Player*> players, int winningPoints, int playedRounds, Player* cardMixerPlayer) :players(players),winningPoints(winningPoints),playedRounds(playedRounds),cardMixerPlayer(cardMixerPlayer)
 {
-
+	playerOne = players.at(0);
+	playerTwo = players.at(1);
 }
 
 void Game::addPointsFromRound(int playerOnePoints, int playerTwoPoints)
 {
+	if ((playerOne == nullptr) || (playerTwo == nullptr))
+	{
+
+		return;
+	}
 	playerOne->addPoints(playerOnePoints);
 	playerTwo->addPoints(playerTwoPoints);
-
+	
 	//absolutwert von differenz
 	diffPointsLastRound = abs(playerTwoPoints - playerOnePoints);
 

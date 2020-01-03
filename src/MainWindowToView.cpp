@@ -97,11 +97,14 @@ void MainWindowToView::evt_loadFileClicked(wxCommandEvent& event) {
 		values = neulib::splitStringIntoValues(subs.at(2),",");
 
 		players.push_back(new Player(playerName,values));
-		
+		game->getPlayers().at(i-1)->setPlayerName(playerName);
+		game->getPlayers().at(i - 1)->setPlayerPointList(values);
+
 	}
 
-	game= new Game(players, 1000, values.size(), players.at(indexOfCardMixerPLayer));
-
+	//game= new Game(players, 1000, values.size(), players.at(indexOfCardMixerPLayer));
+	game->setCardMixerPlayer(indexOfCardMixerPLayer);
+	
 }
 
 void MainWindowToView::evt_saveFileClicked(wxCommandEvent& event)
